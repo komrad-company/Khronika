@@ -1,4 +1,4 @@
-pub use tracing::{debug, error, info, warn, trace};
+pub use tracing::{debug, error, info, trace, warn};
 use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitExt};
 
 pub mod configuration;
@@ -10,7 +10,7 @@ pub fn intialize_logger(config: TelemetryConfiguration) {
     let filter = EnvFilter::new(config.level.as_str());
     let registry = tracing_subscriber::registry().with(filter);
 
-  let (file, _) = match config.output {
+    let (file, _) = match config.output {
         TelemetryOutput::File { file } => (Some(file), None),
         TelemetryOutput::Remote { telemetry } => (None, Some(telemetry)),
         TelemetryOutput::Both { file, telemetry } => (Some(file), Some(telemetry)),
