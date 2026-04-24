@@ -1,8 +1,8 @@
-use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitExt};
+use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt, EnvFilter};
 
 use crate::configuration::{TelemetryConfiguration, TelemetryOutput};
 
-pub fn intialize(config: TelemetryConfiguration) {
+pub fn intialize_logger(config: TelemetryConfiguration) {
     let filter = EnvFilter::new(config.level.as_str());
     let registry = tracing_subscriber::registry().with(filter);
 
