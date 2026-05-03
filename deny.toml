@@ -8,7 +8,17 @@ ignore = []
 
 [licenses]
 version = 2
-allow = ["MIT", "Apache-2.0", "BSD-3-Clause", "ISC", "0BSD", "Zlib"]
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-3-Clause",
+    "ISC",
+    "0BSD",
+    "Zlib",
+    "AGPL-3.0",
+    "AGPL-3.0-or-later",
+
+]
 confidence-threshold = 0.90
 
 [bans]
