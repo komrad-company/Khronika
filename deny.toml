@@ -17,6 +17,7 @@ allow = [
     "Zlib",
     "AGPL-3.0",
     "AGPL-3.0-or-later",
+    "Unicode-3.0",
 ]
 confidence-threshold = 0.90
 
@@ -30,4 +31,3 @@ unknown-registry = "deny"
 unknown-git = "deny"
 allow-registry = ["https://github.com/rust-lang/crates.io-index"]
 allow-git = ["https://github.com/komrad-company/Khronika.git"]
-
