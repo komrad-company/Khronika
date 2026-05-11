@@ -6,4 +6,4 @@ pub mod telemetry;
 
 pub use errors::Error;
 pub use opentelemetry_sdk::logs::SdkLoggerProvider;
-pub use telemetry::intialize_logger;
+pub use telemetry::initialize_logger;

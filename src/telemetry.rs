@@ -6,7 +6,7 @@ use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitEx
 use crate::configuration::{TelemetryConfiguration, TelemetryOutput};
 use crate::errors::Error;
 
-pub fn intialize_logger(
+pub fn initialize_logger(
     config: TelemetryConfiguration,
 ) -> Result<Option<SdkLoggerProvider>, Error> {
     let filter = EnvFilter::new(config.level.as_str());
