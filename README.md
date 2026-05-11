@@ -7,7 +7,7 @@ Khronika is the unified logging and telemetry layer of the Komrad ecosystem. It 
 
 ```
 your-crate
-    └── khronika::intialize_logger(config)
+    └── khronika::initialize_logger(config)
              ├── stderr  (JSON, always)
              ├── file    (JSON, optional)
              └── remote  (OTLP/HTTP, optional)
@@ -20,12 +20,12 @@ your-crate
 The collective exposes two things. Two is sufficient.
 
 ```rust
-use khronika::{intialize_logger, error, warn, info, debug, trace};
+use khronika::{initialize_logger, error, warn, info, debug, trace};
 use khronika::configuration::TelemetryConfiguration;
 
 fn main() {
     let config: TelemetryConfiguration = /* deserialised from JSON */;
-    let _provider = intialize_logger(config).expect("logger initialisation failed");
+    let _provider = initialize_logger(config).expect("logger initialisation failed");
 
     info!("The collective is watching.");
 }
@@ -40,10 +40,10 @@ fn main() {
 | `SdkLoggerProvider` | OpenTelemetry provider — keep alive for the process lifetime |
 | `Error` | Fatal errors — the caller must handle them or face consequences |
 
-### `intialize_logger`
+### `initialize_logger`
 
 ```rust
-pub fn intialize_logger(config: TelemetryConfiguration) -> Result<Option<SdkLoggerProvider>, Error>
+pub fn initialize_logger(config: TelemetryConfiguration) -> Result<Option<SdkLoggerProvider>, Error>
 ```
 
 Initialises the tracing registry with the configured outputs. Returns an `SdkLoggerProvider` when a remote endpoint is configured — the caller must keep it alive for the entire process lifetime or remote log flushing stops.
