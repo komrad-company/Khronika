@@ -22,14 +22,22 @@ pub fn initialize_logger(
         .json()
         .with_writer(std::io::stderr);
 
-    let file_layer = file_path.map(|path| {
-        let appender =
-            tracing_appender::rolling::never(path.parent().unwrap(), path.file_name().unwrap());
-
-        tracing_subscriber::fmt::layer()
-            .json()
-            .with_writer(appender)
-    });
+    let file_layer = file_path
+        .map(|path| -> Result<_, Error> {
+            let parent = path
+                .parent()
+                .map(|p| p.to_path_buf())
+                .ok_or_else(|| Error::InvalidFilePath(path.clone()))?;
+            let file_name = path
+                .file_name()
+                .map(|f| f.to_os_string())
+                .ok_or_else(|| Error::InvalidFilePath(path))?;
+            let appender = tracing_appender::rolling::never(parent, file_name);
+            Ok(tracing_subscriber::fmt::layer()
+                .json()
+                .with_writer(appender))
+        })
+        .transpose()?;
 
     let logger_provider = telemetry_url
         .map(|url| -> Result<SdkLoggerProvider, Error> {
