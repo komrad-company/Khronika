@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 pub use tracing::{debug, error, info, trace, warn};
 
 pub mod configuration;
