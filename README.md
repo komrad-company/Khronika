@@ -1,5 +1,7 @@
 # Khronika
 
+![CI](https://github.com/komrad-company/Khronika/actions/workflows/ci.yml/badge.svg) ![Release](https://img.shields.io/github/v/release/komrad-company/Khronika) ![License: AGPL-3.0](https://img.shields.io/badge/license-AGPL--3.0-blue)
+
 > *"A collective that cannot observe itself is blind. Blindness is not tolerated."*
 > — Komrad Engineering Collective, 2026
 
